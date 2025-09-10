@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, Column, String, Integer, Date
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
-
+from datetime import date
 
 class Base(DeclarativeBase):
     pass
@@ -13,6 +13,7 @@ class User(Base):
     last_name = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
     signup_date = Column(Date, nullable=False)
+    country = Column(String(100), nullable=True)
 
     def __repr__(self):
         return f"User(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, signup_date={self.signup_date})"
